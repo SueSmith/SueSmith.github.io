@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style type="text/css">
+body, html {background:#000000; font-family:sans-serif;}
+.badgeHolder {width:500px; background:#ffffff; margin:auto; 
+	position:relative; border-radius:15px;}
+span {position:absolute; top:0; left:0; right:0; bottom:0; 
+	background-color:rgba(255, 255, 255, 0.5); z-index:9999; 
+	color:#660000; text-align:center; padding:5%; 
+	border: 2px solid #ffffff; border-radius:15px; 
+	margin:40% 25% 40% 25%;}
+</style>
+</head>
+<body>
+<div class='badgeHolder'>
+<object id="badge" data="baked-svg-badge.svg" type="image/svg+xml"></object>
+</div>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<script>
+$(window).load(function () {
+	//get the assertion, remove the CDATA
+	var assertion=JSON.parse(document.getElementById('badge')
+		.contentDocument.getElementsByTagName('openbadges:assertion')[0]
+		.innerHTML.replace("<![CDATA[", "").replace("]]>", ""));
+	//get the assertion issued date
+	var issuedDate = new Date((assertion.issuedOn)*1000).toLocaleFormat('%d %B %Y');
+	//get the badge class from url in assertion badge field
+	var badgeName;
+	$.getJSON(assertion.badge, function(data) {
+			//badge class name field
+			badgeName=data.name;
+			//hover effect
+			$(".badgeHolder").hover(function() { 
+				//overlay
+				$(this).append(
+					$("<span id='ass'>Badge: <strong>"+badgeName+
+					"</strong><br/>Issued: <strong>"+issuedDate+
+					"</strong></span>"));
+				}, function() {
+					$(this).find("span:last").remove();
+			});
+	});
+});
+</script>
+</body>
+</html>
