@@ -1,0 +1,10 @@
+{
+
+    "name": "SVG Coder",
+    "description": "Codes Scalable Vector Graphics.",
+    "image": "http://suesmith.github.io/makes-svgs.svg",
+    "criteria": "http://benormal.info/issue-tests/criteria.html",
+    "alignment": [ ],
+    "issuer": "http://benormal.info/issue-tests/issuer-organization.json"
+
+}
