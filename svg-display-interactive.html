@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style type="text/css">
+body, html {background:#000000; font-family:sans-serif;}
+.badgeHolder {width:500px; background:#ffffff; margin:auto; 
+	position:relative; border-radius:15px;}
+span {position:absolute; top:0; left:0; right:0; bottom:0; 
+	background-color:rgba(255, 255, 255, 0.5); z-index:9999; 
+	color:#660000; text-align:center; padding:5% 2% 5% 2%; 
+	border: 2px solid #ffffff; border-radius:15px; 
+	margin:40% 25% 40% 25%;}
+svg path, svg polygon, svg text {
+	transition: 1s ease-in-out;
+}
+svg:hover path {
+	fill-opacity: 0.3;
+	stroke:#ffffff;
+}
+svg:hover polygon {
+	fill-opacity: 0.5;
+}
+svg:hover text {
+	fill-opacity: 1.0;
+	transform:translateY(-60px);
+}
+tspan.title {fill:#660000;}
+tspan.date {fill:#006600; font-style:italic;}
+</style>
+</head>
+<body>
+<div class='badgeHolder'>
+<img class="svg" src="basic-baked-badge.svg"/>
+</div>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<script type="text/javascript">
+jQuery(document).ready(function() {
+
+	//put svg inline using this technique http://stackoverflow.com/questions/11978995/how-to-change-color-of-svg-image-using-css-jquery-svg-image-replacement/
+	jQuery('img.svg').each(function(){
+		var $img = jQuery(this);
+		var imgURL = $img.attr('src');
+		jQuery.get(imgURL, function(data) {
+			var $svg = jQuery(data).find('svg');
+			$img.replaceWith($svg); 
+			//get assertion data
+			var assertion=JSON.parse(document.getElementsByTagName('openbadges:assertion')[0]
+				.innerHTML.replace("<![CDATA[", "").replace("]]>", ""));
+			//get the assertion issued date
+			var issuedDate = new Date((assertion.issuedOn)*1000).toLocaleFormat('%d %B %Y'); 
+			$('svg').append("<text x='50' y='110' text-anchor='middle' font-size='5' font-weight='bold' fill-opacity='0'><tspan class='title'>SVG Coder</tspan><tspan dy='10' class='date'>"+issuedDate+"</tspan></text>");
+			$("body").html($("body").html());
+		});
+	});
+});
+</script>
+</body>
+</html>
