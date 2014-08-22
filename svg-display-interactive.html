@@ -45,11 +45,18 @@ jQuery(document).ready(function() {
 			$img.replaceWith($svg); 
 			//get assertion data
 			var assertion=JSON.parse(document.getElementsByTagName('openbadges:assertion')[0]
-				.innerHTML.replace("<![CDATA[", "").replace("]]>", ""));
+				.innerHTML.replace("<![CDATA[", "").replace("]]>", "")); 
 			//get the assertion issued date
 			var issuedDate = new Date((assertion.issuedOn)*1000).toLocaleFormat('%d %B %Y'); 
-			$('svg').append("<text x='50' y='110' text-anchor='middle' font-size='5' font-weight='bold' fill-opacity='0'><tspan class='title'>SVG Coder</tspan><tspan dy='10' class='date'>"+issuedDate+"</tspan></text>");
-			$("body").html($("body").html());
+			//get badge name
+			var badgeName;
+			$.getJSON(assertion.badge, function(data) {
+				//badge class name field
+				badgeName=data.name;
+				$('svg').append("<text x='50' y='110' text-anchor='middle' font-size='5' font-weight='bold' fill-opacity='0'><tspan class='title'>"+badgeName+"</tspan><tspan dy='10' class='date'>"+issuedDate+"</tspan></text>");
+				$("body").html($("body").html());
+				
+			});
 		});
 	});
 });
