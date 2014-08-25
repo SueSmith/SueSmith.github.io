@@ -36,9 +36,7 @@ jQuery(document).ready(function() {
 	jQuery('img.svg').each(function(){
 		var $img = jQuery(this);
 		var imgURL = $img.attr('src');
-		jQuery.get(imgURL, function(data) {
-			var $svg = jQuery(data).find('svg');
-			$img.replaceWith($svg); 
+		$(".badgeHolder").load(imgURL + " svg", function() {
 			//get assertion data
 			var assertion=JSON.parse(document.getElementsByTagName('openbadges:assertion')[0]
 				.innerHTML.replace("<![CDATA[", "").replace("]]>", "")); 
