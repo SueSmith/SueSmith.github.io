@@ -28,6 +28,7 @@ tspan.date {fill:#006600; font-style:italic;}
 <img class="svg" src="basic-baked-badge.svg"/>
 </div>
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<script src="jsonp.js"></script>
 <script type="text/javascript">
 jQuery(document).ready(function() {
 
@@ -47,12 +48,14 @@ jQuery(document).ready(function() {
 			var issuedDate = badgeDate.getDate() +' '+months[badgeDate.getMonth()]+' '+badgeDate.getFullYear();
 			//get badge name
 			var badgeName;
-			$.getJSON(assertion.badge, function(data) {
-				//badge class name field
-				badgeName=data.name;
-				$('svg').append("<text x='50' y='110' text-anchor='middle' font-size='5' font-weight='bold' fill-opacity='0'><tspan class='title'>"+badgeName+"</tspan><tspan dy='10' class='date'>"+issuedDate+"</tspan></text>");
-				$("body").html($("body").html());
-				
+			$.jsonp({
+				url: assertion.badge, 
+				success: function(data){
+					badgeName = data.name; 
+					$('svg').append("<text x='50' y='110' text-anchor='middle' font-size='5' font-weight='bold' fill-opacity='0'><tspan class='title'>"+badgeName+"</tspan><tspan dy='10' class='date'>"+issuedDate+"</tspan></text>");
+					$("body").html($("body").html());//refresh to display amendments		
+
+				}
 			});
 		});
 	});
