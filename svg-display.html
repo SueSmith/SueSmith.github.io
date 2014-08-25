@@ -14,38 +14,48 @@ span {position:absolute; top:0; left:0; right:0; bottom:0;
 </head>
 <body>
 <div class='badgeHolder'>
-<object id="badge" data="baked-svg-badge.svg" type="image/svg+xml"></object>
+<img src="baked-svg-badge.svg" class="svg">
 </div>
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 <script src="jsonp.js"></script>
 <script>
-$(window).load(function () {
-	//get the assertion, remove the CDATA
-	var assertion=JSON.parse(document.getElementById('badge')
-		.contentWindow.document.getElementsByTagName('openbadges:assertion')[0]
-		.innerHTML.replace("<![CDATA[", "").replace("]]>", ""));
-	//get the assertion issued date
-	var months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
-	var badgeDate = new Date((assertion.issuedOn)*1000);
-	var issuedDate = badgeDate.getDate() +' '+months[badgeDate.getMonth()]+' '+badgeDate.getFullYear();
-	//get the badge class from url in assertion badge field
-	var badgeName;
-	$.jsonp({
-		url: assertion.badge, 
-		success: function(data){
-			badgeName = data.name; 
-			//hover effect
-			$(".badgeHolder").hover(function() { 
-				//overlay
-				$(this).append(
-					$("<span>Badge: <strong>"+badgeName+
-					"</strong><br/>Issued: <strong>"+issuedDate+
-					"</strong></span>"));
-				}, function() {
-					$(this).find("span:last").remove();
-				});
-		}
+jQuery(document).ready(function() {
+
+	//put svg inline using this technique http://stackoverflow.com/questions/11978995/how-to-change-color-of-svg-image-using-css-jquery-svg-image-replacement/
+	jQuery('img.svg').each(function(){
+		var $img = jQuery(this);
+		var imgURL = $img.attr('src');
+		$(".badgeHolder").load(imgURL + " svg", function() {
+		
+			//get assertion data
+			var assertion=JSON.parse(document.getElementsByTagName('openbadges:assertion')[0]
+				.innerHTML.replace("<![CDATA[", "").replace("]]>", "")); 
+			//get the assertion issued date
+			var months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+			var badgeDate = new Date((assertion.issuedOn)*1000);
+			var issuedDate = badgeDate.getDate() +' '+months[badgeDate.getMonth()]+' '+badgeDate.getFullYear();
+			
+			//get badge name
+			var badgeName; 
+			$.jsonp({
+				url: assertion.badge, 
+				success: function(data){
+					badgeName = data.name; 
+					//hover effect
+					$(".badgeHolder").hover(function() { 
+						//overlay
+						$(this).append(
+							$("<span>Badge: <strong>"+badgeName+
+							"</strong><br/>Issued: <strong>"+issuedDate+
+							"</strong></span>"));
+						}, function() {
+						$(this).find("span:last").remove();
+						});		
+
+				}
+			});
 	});
+});
 });
 </script>
 </body>
