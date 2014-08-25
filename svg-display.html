@@ -22,7 +22,7 @@ span {position:absolute; top:0; left:0; right:0; bottom:0;
 $(window).load(function () {
 	//get the assertion, remove the CDATA
 	var assertion=JSON.parse(document.getElementById('badge')
-		.contentDocument.getElementsByTagName('openbadges:assertion')[0]
+		.contentWindow.document.getElementsByTagName('openbadges:assertion')[0]
 		.innerHTML.replace("<![CDATA[", "").replace("]]>", ""));
 	//get the assertion issued date
 	var months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
