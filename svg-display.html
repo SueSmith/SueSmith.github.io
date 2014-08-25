@@ -17,6 +17,7 @@ span {position:absolute; top:0; left:0; right:0; bottom:0;
 <object id="badge" data="baked-svg-badge.svg" type="image/svg+xml"></object>
 </div>
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<script src="jsonp.js"></script>
 <script>
 $(window).load(function () {
 	//get the assertion, remove the CDATA
@@ -29,9 +30,10 @@ $(window).load(function () {
 	var issuedDate = badgeDate.getDate() +' '+months[badgeDate.getMonth()]+' '+badgeDate.getFullYear();
 	//get the badge class from url in assertion badge field
 	var badgeName;
-	$.getJSON(assertion.badge, function(data) {
-			//badge class name field
-			badgeName=data.name;
+	$.jsonp({
+		url: assertion.badge, 
+		success: function(data){
+			badgeName = data.name; 
 			//hover effect
 			$(".badgeHolder").hover(function() { 
 				//overlay
@@ -41,7 +43,8 @@ $(window).load(function () {
 					"</strong></span>"));
 				}, function() {
 					$(this).find("span:last").remove();
-			});
+				});
+		}
 	});
 });
 </script>
