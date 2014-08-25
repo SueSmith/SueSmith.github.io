@@ -50,7 +50,7 @@ jQuery(document).ready(function() {
 				url: assertion.badge, 
 				success: function(data){
 					badgeName = data.name; 
-					$('svg').append("<text x='50' y='50' text-anchor='middle' font-size='5' font-weight='bold' fill-opacity='0'><tspan class='title'>"+badgeName+"</tspan><tspan dy='10' class='date'>"+issuedDate+"</tspan></text>");
+					$('svg').append("<text x='50' y='110' text-anchor='middle' font-size='5' font-weight='bold' fill-opacity='0'><tspan class='title'>"+badgeName+"</tspan><tspan dy='10' class='date'>"+issuedDate+"</tspan></text>");
 					$("body").html($("body").html());//refresh to display amendments		
 
 				}
