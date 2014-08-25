@@ -42,7 +42,9 @@ jQuery(document).ready(function() {
 			var assertion=JSON.parse(document.getElementsByTagName('openbadges:assertion')[0]
 				.innerHTML.replace("<![CDATA[", "").replace("]]>", "")); 
 			//get the assertion issued date
-			var issuedDate = new Date((assertion.issuedOn)*1000).toLocaleFormat('%d %B %Y'); 
+			var months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+			var badgeDate = new Date((assertion.issuedOn)*1000);
+			var issuedDate = badgeDate.getDate() +' '+months[badgeDate.getMonth()]+' '+badgeDate.getFullYear();
 			//get badge name
 			var badgeName;
 			$.getJSON(assertion.badge, function(data) {
