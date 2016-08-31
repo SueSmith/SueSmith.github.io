@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style type="text/css">
+html, body {font-family:Helvetica Neue, Helvetica, Arial, sans-serif; color:#003; width:80%; padding:5% 10% 5% 10%;}
+#qTable td {padding:5px 1em; border:1px solid #ccf; border-radius:5px; }
+#qTable {width:100%; border-spacing:0.5em}
+#qTable li {cursor:pointer}
+#qTable li:hover { text-decoration:underline} 
+#qTable tr:nth-child(n+2) {display:none}
+#qTable p {font-weight:bold; line-height:50%} 
+#errdiv {display:none; font-weight:bold; color:#669; padding:0.3em} 
+.selectedAnswer {font-weight:bold; color:#336;} 
+td.answer {background-color:#eeffee;}
+td.question {background-color:#FFe;}
+i {display:none} 
+</style>
+<script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+<script type="text/javascript">
+
+$(document).ready(function() { 
+	//checks difference between number of rows and ids. If none, guide is complete and code can be removed.
+	//if a result is used in more that one question reduce the value or results by the number of reuses
+	var rows = $('#qTable tr').length - 1; 
+	var liids = $('#qTable li').length;
+	if(rows   != liids) {	  
+	  $('#errdiv').html('Number of rows ( ' + rows + ' ) does not match the number of questions ( ' +liids + ' )').show()
+	}
+
+  $('#qTable li').on('click',function() {
+    //style the selected answer
+    $(this).addClass('selectedAnswer').siblings().removeClass('selectedAnswer');								
+	//find the id of the first question in the graoup								
+	//var q1id = $(this).parent().children('li:first').find('i').text();
+	//hide all rows after the currently displayed row and remove selectedAnswer style
+	var rowCurrent = $(this).closest("tr").prevAll("tr").length + 2; 
+	var rowsAfter = ' tr:nth-child(n+' + rowCurrent + ')';
+	$('#qTable' + rowsAfter).hide().find('li').removeClass('selectedAnswer');
+	//show the next row that matches the question id
+	var italNum =  $(this).find('i').text();
+	var qNext = ' tr:nth-child(' + italNum + ')'; 
+	$('#qTable' + qNext).fadeIn(800);
+	//scroll code to bring next question into view
+	var qNextPos = $('#qTable' + qNext).offset();
+	var qNextTop = qNextPos.top;
+	var qNextHigh = $('#qTable' + qNext).height();
+	var qNextBot = qNextHigh + qNextTop + 20; 
+	var scrHigh = $(window).innerHeight();
+	var difHigh = qNextBot - scrHigh; 
+	if(difHigh > 0) {window.scrollTo(0, difHigh)}
+	})
+})
+</script>
+</head>
+<body>
+<div id="errdiv"></div>
+<h1>Using your API response field</h1>
+<p><em>Example code taken from <a href="http://jsfiddle.net/wtjmiller/hUHQ2/1/">http://jsfiddle.net/wtjmiller/hUHQ2/1/</a></p><p>This approach continues to display questions after they've been answered.</p><p>Other option would be to hide answered questions and only show the current question, with a back button to go back to the previous question, like <a href="https://codepen.io/njmcode/pen/Fjcai">https://codepen.io/njmcode/pen/Fjcai</a></em></p>
+<table id="qTable" >
+  <tr><!--1-->
+    <td class="question"><p>Is the field inside a data source (array)? </p>
+      <ul>
+        <li>Yes <i>2</i></li>
+        <li>No <i>10</i></li>
+    </ul></td>
+  </tr>
+  <tr><!--2-->
+    <td class="question"><p>Do you want to display it in an element? </p>
+      <ul>
+        <li>Yes <i>3</i></li>
+        <li>No <i>6</i></li>
+    </ul></td>
+  </tr>
+  <tr><!--3-->
+    <td class="question"><p>Is it an image URL?</p>
+      <ul>
+        <li>Yes<i>4</i></li>
+        <li>No<i>5</i></li>
+    </ul></td>
+  </tr>
+  <tr><!--4-->
+    <td class="answer">You will need a dynamic element such as a table or page controller, add one and set its "data source" property to "dynamic" - bind the data source to the dynamic element. You will see a green dot when the field is bound.<br/><br/>
+Inside this add a table cell or view, and add your image element inside that.<br/><br/>
+Select the table cell or view and open Properties, Events. Manage the tapped event and choose the Display Image from URL action. Select the image element and the image url from the Parent Context container.
+</td>
+  </tr>
+  <tr><!--5-->
+    <td class="answer">Add the element you want to display the field in - use an element that can display the data type for the field, such as a label or text view for a string response.<br/><br/>
+Click the field in the route Responses section - select your element from the Elements container, or select by clicking and dragging the field onto the element on the canvas. You will see a green dot when the field is bound.
+</td>
+  </tr>
+  <tr><!--6-->
+    <td class="question"><p>What do you want to do with the field?</p>
+    <ul>
+    <li>Store it in the app<i>7</i></li>
+    <li>Pass it into another page<i>8</i></li>
+    <li>Use it for some other functionality<i>9</i></li>
+    </ul>
+    </td>
+  </tr>
+  <tr><!--7-->
+    <td class="answer">You can set a field as the value of a variable in your app. Create a variable using the Variables drawer on the left.<br/><br/>
+Decide when you want the field to be stored - it will need to be when an event occurs on the child element of the dynamic parent element your data source is bound to, such as a table cell or view. Select the element and open Properties, Events. Click Manage for your chosen event, such as Tapped or Loaded.<br/><br/>
+Choose the Set Variable action, selecting your variable and the relevant field in the Parent Context container.
+</td>
+  </tr>
+  <tr><!--8-->
+    <td class="answer">Declare an Inbound Context variable in the page you plan on passing the data into - use the tab on the right, choosing a data type that matches the response field.<br/><br/>
+Decide when you want the user to navigate to the other page - it will need to be when an event occurs on the child element of the dynamic parent element your data source is bound to, such as a table cell or view. Select the element and open Properties, Events. Click Manage for your chosen event, such as Tapped or Loaded.<br/><br/>
+Choose the Go To Page action, selecting the target page and the response field from the Parent Context container.
+</td>
+  </tr>
+  <tr><!--9-->
+    <td class="answer">You can use the field in any available action. Decide when you want your functionality to occur - it will need to be when an event occurs on the child element of the dynamic parent element your data source is bound to, such as a table cell or view.<br/><br/> Select the element and open Properties, Events. Click Manage for your chosen event, such as Tapped or Loaded. <br/><br/>
+Select the action you need, choosing your response fields for any relevant inputs from the Parent Context container.
+</td>
+  </tr>
+  <tr><!--10-->
+    <td class="question"><p>Do you want to display it in an element?</p>
+    <ul><li>Yes<i>11</i></li>
+    <li>No<i>14</i></li>
+    </td>
+  </tr>
+  <tr><!--11-->
+  	<td class="question"><p>Is it an image URL?</p>
+  	<ul>
+  	<li>Yes<i>12</i></li>
+  	<li>No<i>13</i></li>
+  	</ul>
+</td>
+  </tr>
+  <tr><!--12-->
+    <td class="answer">Add an image element to your page, making sure it isn't inside a dynamic element such as a Table or Page Controller.<br/><br/>
+You will need to use an action to display your image. With the route open in the API tab, open Events. Click Manage for the status code event that fires when a successful response is received, for example 200 OK.<br/><br/>
+Choose the Display Image from URL action. Select the image element in your page and the response field from the Response Body container.
+</td>
+  </tr>
+  <tr><!--13-->
+    <td class="answer">You can bind the field directly to an element on your page by clicking and dragging it onto the element on the canvas or making a selection from the Elements container.<br/><br/>
+If you need to carry out processing on the field before displaying it, for example carrying out a conditional test on it, you can add an action to the success status code in the API tab Events section.<br/><br/>
+Click manage to add the action, selecting your response field from the Response Body container. For a conditional test select the If... Else action.
+</td>
+  </tr>
+  <tr><!--14-->
+    <td class="question"><p>What do you want to do with the field?</p>
+    <ul>
+    <li>Store it in the app<i>15</i></li>
+    <li>Pass it into another page<i>16</i></li>
+    <li>Use it for some other functionality<i>17</i></li>
+    </ul>
+    </td>
+  </tr>
+  <tr><!--15-->
+    <td class="answer">You can set a field as the value of a variable in your app. Create a variable using the Variables drawer on the left. <br/><br/>
+With the route open in the API tab, choose Events. Click Manage for the event that fires when a successful response is received, such as 200 OK. <br/><br/>
+Choose the Set Variable action, selecting your variable and the relevant field in the Response Body container.
+</td>
+  </tr>
+  <tr><!--16-->
+    <td class="question">Declare an Inbound Context variable in the page you plan on passing the data into - use the tab on the right, choosing a data type that matches the response field.<br/><br/>
+Decide when you want the user to navigate to the other page, this could be when the user interacts with the element the data is displayed in on the page, or when the API response is received. 
+<ul><li>Navigate when the user interacts with an element the field is bound to<i>18</i></li>
+<li>Navigate when the API response is received<i>19</i></li>
+</ul>
+</td>
+  </tr>
+  <tr><!--17-->
+    <td class="question">You can use the field in any available action. Decide when you want your functionality to occur - it will need to be when an event occurs on the element the field is bound to, or an API status code event.
+    <ul><li>Carry out the functionality when the user interacts with an element<i>20</i></li>
+    <li>Carry out the functionality when the API response is received<i>21</i></li>
+    </ul>
+	</td>
+  </tr>
+  <tr><!--18-->
+  <td class="answer">Select the element and open Properties, Events. Click Manage for your chosen event, e.g. Tapped. 
+<br/><br/>
+Choose the Go To Page action, selecting the target page.  <br/><br/>
+Choose the element value from the Elements container.
+	</td>
+  </tr>
+  <tr><!--19-->
+  <td class="answer">
+  Open the Events section for the route in the API tab. Click Manage for your chosen status code, e.g. 200 OK.<br/><br/>
+  Choose the Go To Page action, selecting the target page.  <br/><br/>
+  Choose the response field from the Response Body container.
+  </td>
+  </tr>
+  <tr><!--20-->
+  <td class="answer">
+  Select the element and open Properties, Events. <br/><br/>Click Manage for your chosen event, such as Tapped. <br/><br/>Select the action you need, choosing your response field for any relevant inputs from the Elements container.
+  </td>
+  </tr>
+  <tr><!--21-->
+  <td class="answer">
+  Open the route in the API tab and select Events. <br/><br/>Click Manage for the relevant event, such as 200 OK for a success response. <br/><br/>Select the action you need, choosing your response field for any relevant inputs from the Response Body container.
+  </td>
+  </tr>
+</table>
+
+
+</body>
+</html>
