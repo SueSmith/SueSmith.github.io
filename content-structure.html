@@ -118,6 +118,9 @@ input[type=submit] {
 #notes {
 	color:#004555; border: 1px solid #004555; margin:10px;
 }
+h2.header {
+	padding-left:30px; padding-top:30px;
+}
 </style>
 <script src="http://code.jquery.com/jquery-1.12.4.js"></script>
 <script>
@@ -158,6 +161,11 @@ $(document).ready(function(){
 	 	if(curr=='do' || curr=='data' || curr=='user'){ 
 	 		if(!($("#accordion a[t='"+curr+"']").parent().parent().is(":visible")))
      			$("#accordion a[t='"+curr+"']").parent().parent().parent().find('h2').trigger('click');
+     		if($(this).attr('t')=='create'){
+     			$("#accordion a[t='"+$(this).attr('t')+"']").parent().parent().parent().parent().parent().find('h2').trigger('click');
+	 			$("#accordion a[t='"+$(this).attr('t')+"']").parent().parent().parent().find('h3').trigger('click');
+	 		}
+     			
      	}
      	else{
      		if(!($("#accordion a[t='"+curr+"']").parent().parent().is(":visible"))){
@@ -191,6 +199,7 @@ $(document).ready(function(){
 		</p>
 	</div>
 </div>
+<h2 class="header">Build your app in Dropsource</h2>
 <div id="accordion">
 	<ul>
 	<li class="active">
@@ -278,7 +287,7 @@ $(document).ready(function(){
 			<li><em>maybe have few user stories together with steps for implementing them in the workbench</em></li>
 		</ul>
 		</p>
-		<p class="next">Once your user story is complete you're ready for the Workbench! [link]</p>
+		<p class="next"><a href="#" t="create">Once your user story is complete you're ready for the Workbench! ></a></p>
 	</div>
 	<div id="eg">
 		<h3>Example Projects</h3>
