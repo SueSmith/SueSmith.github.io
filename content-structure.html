@@ -121,6 +121,11 @@ input[type=submit] {
 h2.header {
 	padding-left:30px; padding-top:30px;
 }
+.back {
+	background-color:#F5F5F5;
+	border-radius:10px;
+	padding:5px;
+}
 </style>
 <script src="http://code.jquery.com/jquery-1.12.4.js"></script>
 <script>
@@ -192,10 +197,10 @@ $(document).ready(function(){
 	<div class="questions">
 		<h3>Quick Start</h3>
 		<p>
-		<span id="qu-do">Have you checked that Dropsource is able to support your use case? <a href="#" t="qu-api">Yes</a> <a href="#" t="no-do">No</a></span><span class="answer" id="no-do">Check out our compatibility list... [link]</span>
-		<span id="qu-api">Do you have an API ready to use? <a href="#" t="qu-design">Yes</a> <a href="#" t="no-api">No</a></span><span class="answer" id="no-api">You will need an API if you intend to use external data in your app... [link]</span>
-		<span id="qu-design">Do you have a visual design for your app? <a href="#" t="qu-user">Yes</a> <a href="#" t="no-design">No</a></span><span class="answer" id="no-design">It's best to have a design prepared... [link]</span>
-		<span id="qu-user">Do you have a user story prepared for your app? <a href="#" t="yes-user">Yes</a> <a href="#" t="no-user">No</a></span><span class="answer" id="no-user">Your Dropsource workflow will be much faster if you write even a simple user story... [link]</span><span class="answer" id="yes-user">Great! You're ready for the Workbench... [link]</span>
+		<span id="qu-do">Have you checked that Dropsource is able to support your use case? <a href="#" t="qu-api">Yes</a> <a href="#" t="no-do">No</a></span><span class="answer" id="no-do"><a href="#" t="qu-do" class="back"><</a> Check out our compatibility list... [link] </span>
+		<span id="qu-api"><a href="#" t="qu-do" class="back"><</a> Do you have an API ready to use? <a href="#" t="qu-design">Yes</a> <a href="#" t="no-api">No</a> </span><span class="answer" id="no-api"><a href="#" t="qu-api" class="back"><</a> You will need an API if you intend to use external data in your app... [link]</span> 
+		<span id="qu-design"><a href="#" t="qu-api" class="back"><</a>Do you have a visual design for your app? <a href="#" t="qu-user">Yes</a> <a href="#" t="no-design">No</a></span><span class="answer" id="no-design"> <a href="#" t="qu-design" class="back"><</a>It's best to have a design prepared... [link]</span>
+		<span id="qu-user"><a href="#" t="qu-design" class="back"><</a>Do you have a user story prepared for your app? <a href="#" t="yes-user">Yes</a> <a href="#" t="no-user">No</a></span><span class="answer" id="no-user"><a href="#" t="qu-user" class="back"><</a> Your Dropsource workflow will be much faster if you write even a simple user story... [link]</span><span class="answer" id="yes-user"><a href="#" t="qu-user" class="back"><</a> Great! You're ready for the Workbench... [link]</span>
 		</p>
 	</div>
 </div>
