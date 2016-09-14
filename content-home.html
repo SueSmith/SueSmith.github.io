@@ -35,7 +35,13 @@ p, #notes li, #intro li, #content li {
 	color:#003545;
 }
 .questions {
-	border: 1px solid #004050; padding:10px; margin:20px;
+	border: 3px double #004050; 
+	padding:20px; 
+	margin:20px; 
+	font-size:16px; 
+	width:600px;
+	margin-left:70px;
+	min-height:200px;
 }
 #intro {
 	width:800px;
@@ -66,7 +72,10 @@ p, #notes li, #intro li, #content li {
 h2 {
 	width:800px;
 	text-align:right;
-	margin:50px 0px 30px;
+	margin:40px 0px 20px;
+}
+.questions p {
+	padding:30px;
 }
 </style>
 <script src="http://code.jquery.com/jquery-1.12.4.js"></script>
@@ -89,10 +98,10 @@ $(document).ready(function(){
 	<div class="questions">
 		<h3>Quick Start</h3>
 		<p>
-		<span id="qu-do">Have you checked that Dropsource is able to support your use case? <a href="#" t="qu-api">Yes</a> <a href="#" t="no-do">No</a></span><span class="answer" id="no-do"><a href="#" t="qu-do" class="back"><</a> Check out <a href="content-structure.html">our compatibility list</a>... </span>
-		<span id="qu-api"><a href="#" t="qu-do" class="back"><</a> Do you have an API ready to use? <a href="#" t="qu-design">Yes</a> <a href="#" t="no-api">No</a> </span><span class="answer" id="no-api"><a href="#" t="qu-api" class="back"><</a> You will need an API if you intend to use external data in your app, see <a href="content-structure.html">our guidance</a>...</span> 
-		<span id="qu-design"><a href="#" t="qu-api" class="back"><</a>Do you have a visual design for your app? <a href="#" t="qu-user">Yes</a> <a href="#" t="no-design">No</a></span><span class="answer" id="no-design"> <a href="#" t="qu-design" class="back"><</a>It's best to have a design prepared, check out <a href="content-structure.html">our tips</a>...</span>
-		<span id="qu-user"><a href="#" t="qu-design" class="back"><</a>Do you have a user story prepared for your app? <a href="#" t="yes-user">Yes</a> <a href="#" t="no-user">No</a></span><span class="answer" id="no-user"><a href="#" t="qu-user" class="back"><</a> Your Dropsource workflow will be much faster if you write even a simple user story, you can use <a href="content-structure.html">our examples</a> for reference...</span><span class="answer" id="yes-user"><a href="#" t="qu-user" class="back"><</a> Great! You're ready for the <a href="content-structure.html">Workbench</a>...</span>
+		<span id="qu-do">Have you checked that Dropsource is able to support your use case?<br/><br/><a href="#" t="qu-api">Yes</a> <a href="#" t="no-do">No</a></span><span class="answer" id="no-do"><a href="#" t="qu-do" class="back"><</a><br/><br/>Check out <a href="content-structure.html">our compatibility list</a>... </span>
+		<span id="qu-api">Do you have an API ready to use?<br/><br/> <a href="#" t="qu-do" class="back"><</a> <a href="#" t="qu-design">Yes</a> <a href="#" t="no-api">No</a></span><span class="answer" id="no-api"><a href="#" t="qu-api" class="back"><</a><br/><br/>You will need an API if you intend to use external data in your app, see <a href="content-structure.html">our guidance</a>...</span> 
+		<span id="qu-design">Do you have a visual design for your app?<br/><br/><a href="#" t="qu-api" class="back"><</a> <a href="#" t="qu-user">Yes</a> <a href="#" t="no-design">No</a></span><span class="answer" id="no-design"><a href="#" t="qu-design" class="back"><</a><br/><br/>It's best to have a design prepared, check out <a href="content-structure.html">our tips</a>...</span>
+		<span id="qu-user">Do you have a user story prepared for your app?<br/><br/><a href="#" t="qu-design" class="back"><</a> <a href="#" t="yes-user">Yes</a> <a href="#" t="no-user">No</a></span><span class="answer" id="no-user"><a href="#" t="qu-user" class="back"><</a><br/><br/>Your Dropsource workflow will be much faster if you write even a simple user story, you can use <a href="content-structure.html">our examples</a> for reference...</span><span class="answer" id="yes-user"><a href="#" t="qu-user" class="back"><</a><br/><br/>Great! You're ready for the <a href="content-structure.html">Workbench</a>...</span>
 		</p>
 	</div>
 </div>
