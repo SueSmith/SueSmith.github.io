@@ -116,15 +116,7 @@ input[type=submit] {
 	padding:5px;
 }
 #notes {
-	color:#004555; border: 1px solid #004555; margin:10px;
-}
-h2.header {
-	padding-left:30px; padding-top:30px;
-}
-.back {
-	background-color:#F5F5F5;
-	border-radius:10px;
-	padding:5px;
+	color:#005565; border: 1px dotted #005565; margin:10px;
 }
 </style>
 <script src="http://code.jquery.com/jquery-1.12.4.js"></script>
@@ -182,29 +174,14 @@ $(document).ready(function(){
      	$( "a[t='"+curr+"']" ).toggleClass( "selected" ); 
 	}); 
  	
- 	$(".questions a").click(function() {
- 		$(this).parent().hide();
- 		var qu=$(this).attr('t');
- 		$("#"+qu).show();
- 	});
 })
 </script>
 </head>
 <body>
 <h1>Using Dropsource - Content Plan</h1>
 <div id="intro">
-	<p>Welcome to the Dropsource help center! Browse the topics below for practical tips on building your app.</p><p>If you have a specific app you're planning to build in Dropsource, hit the ground running with our Quick Start wizard - it'll point you in the right direction depending on where you're at with your app development process. You'll need a few things prepared before you get started in the Workbench:</p>
-	<div class="questions">
-		<h3>Quick Start</h3>
-		<p>
-		<span id="qu-do">Have you checked that Dropsource is able to support your use case? <a href="#" t="qu-api">Yes</a> <a href="#" t="no-do">No</a></span><span class="answer" id="no-do"><a href="#" t="qu-do" class="back"><</a> Check out our compatibility list... [link] </span>
-		<span id="qu-api"><a href="#" t="qu-do" class="back"><</a> Do you have an API ready to use? <a href="#" t="qu-design">Yes</a> <a href="#" t="no-api">No</a> </span><span class="answer" id="no-api"><a href="#" t="qu-api" class="back"><</a> You will need an API if you intend to use external data in your app... [link]</span> 
-		<span id="qu-design"><a href="#" t="qu-api" class="back"><</a>Do you have a visual design for your app? <a href="#" t="qu-user">Yes</a> <a href="#" t="no-design">No</a></span><span class="answer" id="no-design"> <a href="#" t="qu-design" class="back"><</a>It's best to have a design prepared... [link]</span>
-		<span id="qu-user"><a href="#" t="qu-design" class="back"><</a>Do you have a user story prepared for your app? <a href="#" t="yes-user">Yes</a> <a href="#" t="no-user">No</a></span><span class="answer" id="no-user"><a href="#" t="qu-user" class="back"><</a> Your Dropsource workflow will be much faster if you write even a simple user story... [link]</span><span class="answer" id="yes-user"><a href="#" t="qu-user" class="back"><</a> Great! You're ready for the Workbench... [link]</span>
-		</p>
-	</div>
+	<p>Welcome to the Dropsource help center! Browse the topics below for practical tips on building your app.</p>
 </div>
-<h2 class="header">Build your app in Dropsource</h2>
 <div id="accordion">
 	<ul>
 	<li class="active">
