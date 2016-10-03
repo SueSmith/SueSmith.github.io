@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Your App Functionality</title>
+<style type="text/css">
+div {float:left;}
+</style>
+<script src="http://code.jquery.com/jquery-1.12.4.js"></script>
+<script>
+$(document).ready(function(){
+	//$(".user-event").hide();
+	$(".page-event").hide();
+	$('body').on('change', '.event-type', function() {
+		var eType=$(this).find(":selected").attr("value");
+		if(eType=="user"){ $(".page-event").hide(); $(".user-event").show();}
+		else { $(".user-event").hide(); $(".page-event").show(); }
+	});
+});
+</script>
+</head>
+<body>
+<p>
+<div>
+The app should 
+<select>
+<option>navigate to another page</option>
+<option>run an api request</option>
+<option>alter an element display</option>
+<option>log into facebook</option>
+<option>carry out a conditional test</option>
+<option>set a variable</option>
+<option>use another app on the device</option>
+<option>show a pop up</option>
+<option>do something else</option>
+</select>
+ when 
+<select class="event-type">
+<option value="user">the user</option>
+<option value="page">the page</option>
+</select>
+</div>
+<div class="user-event">
+<select>
+<option value="tap">taps</option>
+<option value="change">changes the value of</option>
+<option value="return">hits the return key in</option>
+<option value="focus">focuses</option>
+<option value="unfocus">unfocuses</option>
+<option value="refresh">refreshes</option>
+<option value="load">loads</option>
+</select>
+</div>
+<div class="page-event">
+<select id="page-event">
+<option value="load">loads</option>
+<option value="resume">resumes</option>
+<option value="leave">is left</option>
+</select>
+</div>
+<div class="user-event">
+&nbsp; a &nbsp;
+<select id="user-element">
+<option value="button" selected="selected">button</option>
+<option value="button">segmented control</option>
+<option value="button">slider</option>
+<option value="button">stepper</option>
+<option value="button">switch</option>
+<option value="button">text field</option>
+<option value="button">scroll view</option>
+<option value="button">image</option>
+<option value="button">activity indicator</option>
+<option value="button">label</option>
+<option value="button">text view</option>
+<option value="button">page controller</option>
+<option value="button">table</option>
+<option value="button">table cell</option>
+<option value="button">view</option>
+<option value="button">web view</option>
+</select>
+</div>
+</p>
+</body>
+</html>
