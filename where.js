@@ -33,9 +33,6 @@ class LocationIndicator extends HTMLElement {
         this.textContent = message;
       }
     }
-    else 
-      this.textContent = "This website is on the 🌐WEB🌐";
-    
   }
 }
 
