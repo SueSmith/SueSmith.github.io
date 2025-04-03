@@ -38,8 +38,7 @@ The style rules in this sheet apply to the edge version of the published site
     font-family: var(--font-family);
     font-size: 2.6rem;
     font-weight:600;
-    margin-top:3rem;
-    margin-bottom:0.5em;
+    margin:1rem;
   }
   
   /* ⚠️ Location indicator ⚠️ */
