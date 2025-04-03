@@ -17,10 +17,16 @@
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <location-indicator>This website is in the US</location-indicator>
-    <h1>Hiya this is a website</h1>
+    <location-indicator></location-indicator>
+    <h1>This is a website for learning about Fastly Compute.</h1>
     <p>
-      Hello there
+      Check out the <a href="https://suesmith.github.io" target="_blank">origin version of the site</a> 
+      – you might notice that the style is different at the edge, that's because our Compute code switches the stylesheet.
     </p>
+    <ul>
+      <li>Try opening a page that doesn't exist: <a href="/ohno">/ohno</a></li>
+      <li>Now try a page that the origin returns as JSON: <a href="data.json>/data.json</a></li>
+    </ul>
+    <p><strong>Take a look in the <code>src/index.js</code> file for the code!</strong></p>
   </body>
 </html>
