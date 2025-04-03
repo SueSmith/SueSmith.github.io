@@ -56,18 +56,18 @@ The style rules in this sheet apply to the origin version of the site
     text-align:center;
   }
   
-a:link,
-a:visited {
-  text-decoration:none;
-  color:var(--color-header);
-}
-a:hover {
-  color:black;
-  background-color:var(--color-bg-alt);
-  text-decoration:underline;
-}
-p, ul {
+  a:link,
+  a:visited {
+    text-decoration:none;
+    color:var(--color-header);
+  }
+  a:hover {
+    color:black;
+    background-color:var(--color-bg-alt);
+    text-decoration:underline;
+  }
+  p, ul {
     max-width:700px;
     text-align:left;
     margin:1rem auto;
-}
+  }
