@@ -28,6 +28,7 @@ The style rules in this sheet apply to the origin version of the site
     color: var(--color-text-main);
     font-size:large;
     text-align:center;
+    padding:1rem;
   }
   
   /* Very light scaling for our illustration */
@@ -84,10 +85,8 @@ The style rules in this sheet apply to the origin version of the site
   
   /* ⚠️ Location indicator ⚠️ */
   location-indicator {
-    color:var(--color-header);
     font-weight:bold;
     text-align:center;
-    padding:1rem; 
   }
   
   .footer {
