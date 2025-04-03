@@ -28,7 +28,6 @@ The style rules in this sheet apply to the edge version of the published site
     margin:0;
     color: var(--color-text-main);
     font-size:large;
-    text-align:center;
     padding:1rem;
   }
   
@@ -56,10 +55,6 @@ The style rules in this sheet apply to the edge version of the published site
     margin-top:0.5em;
     margin-bottom:0.5em;
   }
-  
-  .edge {
-    text-align:center;
-  }
 
   a:link,
   a:visited {
@@ -74,6 +69,5 @@ The style rules in this sheet apply to the edge version of the published site
 
   p, ul {
     max-width:700px;
-    text-align:left;
     margin:1rem auto;
   }
