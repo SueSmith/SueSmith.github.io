@@ -19,20 +19,23 @@ class LocationIndicator extends HTMLElement {
           this.textContent = where;
         }
       });
-    }
 
-    // Add a flag emoji after the country code – may cause weirdness
-    let locationInfo = this.textContent.trim();
-    if (locationInfo && locationInfo.length > 0) {
-      let locBits = locationInfo.split(" ");
-      const codePoints = locBits[locBits.length - 1]
-        .toUpperCase()
-        .split("")
-        .map((char) => 127397 + char.charCodeAt());
-      let flag = String.fromCodePoint(...codePoints);
-      let message = locationInfo + "\n" + flag;
-      this.textContent = message;
+      // Add a flag emoji after the country code – may cause weirdness
+      let locationInfo = this.textContent.trim();
+      if (locationInfo && locationInfo.length > 0) {
+        let locBits = locationInfo.split(" ");
+        const codePoints = locBits[locBits.length - 1]
+          .toUpperCase()
+          .split("")
+          .map((char) => 127397 + char.charCodeAt());
+        let flag = String.fromCodePoint(...codePoints);
+        let message = locationInfo + "\n" + flag;
+        this.textContent = message;
+      }
     }
+    else 
+      this.textContent = "This website is on the 🌐WEB🌐";
+    
   }
 }
 
