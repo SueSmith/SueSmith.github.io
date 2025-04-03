@@ -68,7 +68,7 @@ a:visited {
   color:var(--color-header);
 }
 a:hover {
-  color:white;
+  color:black;
   background-color:var(--color-bg-alt);
   text-decoration:underline;
 }
