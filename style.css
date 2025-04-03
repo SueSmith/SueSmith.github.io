@@ -27,22 +27,7 @@ The style rules in this sheet apply to the origin version of the site
     margin: 0;
     color: var(--color-text-main);
     font-size:large;
-  }
-  
-  /* Page structure */
-  .wrapper {
-    min-height: var(--wrapper-height);
-    background-color: var(--color-bg);
-    place-items: center;
-    margin: 0;
-    padding-left:0.5rem;
-    padding-right:0.5rem;
-  }
-  .content {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+    text-align:center;
   }
   
   /* Very light scaling for our illustration */
