@@ -24,10 +24,12 @@ The style rules in this sheet apply to the origin version of the site
   
   body {
     font-family: var(--font-family);
-    margin: 0;
+    margin: auto;
     color: var(--color-text-main);
     font-size:large;
     padding:1rem;
+    max-width:800px;
+    text-align:center;
   }
   
   /* Very light scaling for our illustration */
@@ -48,7 +50,6 @@ The style rules in this sheet apply to the origin version of the site
   /* ⚠️ Location indicator ⚠️ */
   location-indicator {
     font-weight:bold;
-    text-align:center;
   }
   
   a:link,
