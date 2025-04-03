@@ -67,3 +67,7 @@ a:hover {
   background-color:var(--color-bg-alt);
   text-decoration:underline;
 }
+p, ul {
+    max-width:600px;
+    text-align:left;
+}
