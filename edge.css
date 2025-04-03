@@ -25,10 +25,12 @@ The style rules in this sheet apply to the edge version of the published site
   body {
     font-family: var(--font-family);
     background-color: var(--color-bg);
-    margin:0;
+    margin:auto;
     color: var(--color-text-main);
     font-size:large;
     padding:1rem;
+    max-width:800px;
+    text-align:center;
   }
   
   /* Very light scaling for our illustration */
@@ -43,7 +45,6 @@ The style rules in this sheet apply to the edge version of the published site
   /* ⚠️ Location indicator ⚠️ */
   location-indicator {
     font-weight:bold;
-    text-align:center;
   }
   
   /* 🚨 Hide content with "origin" class name at the edge 🚨 */
