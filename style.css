@@ -69,5 +69,5 @@ a:hover {
 p, ul {
     max-width:700px;
     text-align:left;
-    margin:auto;
+    margin:1rem auto;
 }
