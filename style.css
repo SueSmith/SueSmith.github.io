@@ -66,3 +66,6 @@ The style rules in this sheet apply to the origin version of the site
     max-width:700px;
     margin:1rem auto;
   }
+  .avatar {
+      font-size:5rem;
+  }
