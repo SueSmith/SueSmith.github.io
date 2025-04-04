@@ -19,7 +19,9 @@ class LocationIndicator extends HTMLElement {
           this.textContent = where;
         }
       });
+    }
 
+    if(where.length > 0){
       // Add a flag emoji after the country code – may cause weirdness
       let locationInfo = this.textContent.trim();
       if (locationInfo && locationInfo.length > 0) {
