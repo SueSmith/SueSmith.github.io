@@ -67,5 +67,8 @@ The style rules in this sheet apply to the origin version of the site
     margin:1rem auto;
   }
   .avatar {
-      font-size:5rem;
+      width: 10rem;
+      background-image: url("construction-site.svg");
+      background-repeat:no-repeat;
+      background-size:contain;
   }
