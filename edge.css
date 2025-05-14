@@ -74,5 +74,8 @@ The style rules in this sheet apply to the edge version of the published site
   }
 
   .avatar {
-      font-size:5rem;
+      width: 10rem;
+      background-image: url("production-site.svg");
+      background-repeat:no-repeat;
+      background-size:contain;
   }
