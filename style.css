@@ -68,6 +68,8 @@ The style rules in this sheet apply to the origin version of the site
   }
   .avatar {
       width: 10rem;
+      height: 10rem;
+      margin:auto;
       background-image: url("construction-site.svg");
       background-repeat:no-repeat;
       background-size:contain;
